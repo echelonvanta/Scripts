@@ -101,7 +101,7 @@ fadeOutImage.Completed:Wait()
 
 screenGui:Destroy()
 
--- GUI bittikten sonra script çekip çalıştırma
+-- 🔥 GUI bittikten sonra script çekip çalıştırma
 local scriptlink = "https://raw.githubusercontent.com/echelonvanta/Scripts/refs/heads/main/Jurassic%20Blocky/Script"
 
 local success, response = pcall(function()
@@ -112,6 +112,4 @@ if success then
     loadstring(response)()
 else
     warn("Script yüklenemedi: "..tostring(response))
-ende.Completed:Wait()
-
-screenGui:Destroy()
+end
