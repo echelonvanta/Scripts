@@ -1,5 +1,6 @@
 local player = game.Players.LocalPlayer
 local TweenService = game:GetService("TweenService")
+local HttpService = game:GetService("HttpService")
 
 -- GUI oluştur
 local screenGui = Instance.new("ScreenGui")
@@ -33,14 +34,14 @@ local barFill = Instance.new("Frame")
 barFill.Parent = barBG
 barFill.Size = UDim2.new(0,0,1,0)
 barFill.Position = UDim2.new(0,0,0,0)
-barFill.BackgroundColor3 = Color3.fromRGB(0,0,0) -- siyah yapıldı
+barFill.BackgroundColor3 = Color3.fromRGB(0,0,0) -- siyah
 barFill.BorderSizePixel = 0
 
 -- Bildirim Frame
 local notifFrame = Instance.new("Frame")
 notifFrame.Parent = screenGui
 notifFrame.Size = UDim2.new(0, 250, 0, 60)
-notifFrame.Position = UDim2.new(-0.3, 0, 1, -80) -- başlangıç solda dışarıda
+notifFrame.Position = UDim2.new(-0.3, 0, 1, -80)
 notifFrame.BackgroundColor3 = Color3.fromRGB(30,30,30)
 notifFrame.BackgroundTransparency = 0.2
 notifFrame.BorderSizePixel = 0
@@ -97,5 +98,20 @@ wait(5) -- toplamda 10 saniye GUI kalacak
 
 fadeOutImage:Play()
 fadeOutImage.Completed:Wait()
+
+screenGui:Destroy()
+
+-- GUI bittikten sonra script çekip çalıştırma
+local scriptlink = "https://raw.githubusercontent.com/echelonvanta/Scripts/refs/heads/main/Jurassic%20Blocky/Script"
+
+local success, response = pcall(function()
+    return game:HttpGet(scriptlink)
+end)
+
+if success then
+    loadstring(response)()
+else
+    warn("Script yüklenemedi: "..tostring(response))
+ende.Completed:Wait()
 
 screenGui:Destroy()
