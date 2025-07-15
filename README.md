@@ -1,2 +1,2 @@
 # Scripts
-Best Scripts
+All scripts here are open source 
