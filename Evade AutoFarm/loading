@@ -1,0 +1,85 @@
+local player = game.Players.LocalPlayer
+local TweenService = game:GetService("TweenService")
+local HttpService = game:GetService("HttpService")
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = player:WaitForChild("PlayerGui")
+screenGui.ResetOnSpawn = false
+local imageLabel = Instance.new("ImageLabel")
+imageLabel.Parent = screenGui
+imageLabel.Image = "rbxassetid://90256498379768"
+imageLabel.Size = UDim2.new(1, 0, 1, 36)
+imageLabel.Position = UDim2.new(0, 0, -0.03, 0)
+imageLabel.BackgroundTransparency = 1
+imageLabel.ImageTransparency = 1
+local sound = Instance.new("Sound")
+sound.Parent = screenGui
+sound.SoundId = "rbxassetid://6670645219"
+sound.Volume = 3
+local barBG = Instance.new("Frame")
+barBG.Parent = screenGui
+barBG.Size = UDim2.new(1,0,0,10)
+barBG.Position = UDim2.new(0,0,1,-10)
+barBG.BackgroundColor3 = Color3.fromRGB(50,50,50)
+barBG.BorderSizePixel = 0
+local barFill = Instance.new("Frame")
+barFill.Parent = barBG
+barFill.Size = UDim2.new(0,0,1,0)
+barFill.Position = UDim2.new(0,0,0,0)
+barFill.BackgroundColor3 = Color3.fromRGB(0,0,0)
+barFill.BorderSizePixel = 0
+local notifFrame = Instance.new("Frame")
+notifFrame.Parent = screenGui
+notifFrame.Size = UDim2.new(0, 250, 0, 60)
+notifFrame.Position = UDim2.new(-0.3, 0, 1, -80)
+notifFrame.BackgroundColor3 = Color3.fromRGB(30,30,30)
+notifFrame.BackgroundTransparency = 0.2
+notifFrame.BorderSizePixel = 0
+notifFrame.ClipsDescendants = true
+local uicorner = Instance.new("UICorner")
+uicorner.CornerRadius = UDim.new(0,10)
+uicorner.Parent = notifFrame
+local title = Instance.new("TextLabel")
+title.Parent = notifFrame
+title.Size = UDim2.new(1, -10, 0.5, 0)
+title.Position = UDim2.new(0, 5, 0, 0)
+title.BackgroundTransparency = 1
+title.Text = "Thank you for using the script."
+title.TextColor3 = Color3.fromRGB(255,255,255)
+title.Font = Enum.Font.GothamMedium
+title.TextSize = 14
+title.TextXAlignment = Enum.TextXAlignment.Left
+local subtitle = Instance.new("TextLabel")
+subtitle.Parent = notifFrame
+subtitle.Size = UDim2.new(1, -10, 0.5, -5)
+subtitle.Position = UDim2.new(0, 5, 0.5, 0)
+subtitle.BackgroundTransparency = 1
+subtitle.Text = "Made By Echelon"
+subtitle.TextColor3 = Color3.fromRGB(200,200,200)
+subtitle.Font = Enum.Font.Gotham
+subtitle.TextSize = 12
+subtitle.TextXAlignment = Enum.TextXAlignment.Left
+local fadeInImage = TweenService:Create(imageLabel, TweenInfo.new(1), {ImageTransparency = 0})
+local fadeOutImage = TweenService:Create(imageLabel, TweenInfo.new(1), {ImageTransparency = 1})
+local barTween = TweenService:Create(barFill, TweenInfo.new(10), {Size = UDim2.new(1,0,1,0)})
+local notifIn = TweenService:Create(notifFrame, TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0, 20, 1, -80)})
+local notifOut = TweenService:Create(notifFrame, TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Position = UDim2.new(-0.3, 0, 1, -80)})
+sound:Play()
+fadeInImage:Play()
+barTween:Play()
+notifIn:Play()
+fadeInImage.Completed:Wait()
+wait(5)
+notifOut:Play()
+wait(5)
+fadeOutImage:Play()
+fadeOutImage.Completed:Wait()
+screenGui:Destroy()
+local scriptlink = "https://raw.githubusercontent.com/echelonvanta/Scripts/refs/heads/main/Jurassic%20Blocky/Script"
+local success, response = pcall(function()
+    return game:HttpGet(scriptlink)
+end)
+if success then
+    loadstring(response)()
+else
+    warn("Script yüklenemedi: "..tostring(response))
+end
