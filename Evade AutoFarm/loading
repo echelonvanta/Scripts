@@ -74,7 +74,7 @@ wait(5)
 fadeOutImage:Play()
 fadeOutImage.Completed:Wait()
 screenGui:Destroy()
-local scriptlink = "https://raw.githubusercontent.com/echelonvanta/Scripts/refs/heads/main/Jurassic%20Blocky/Script"
+local scriptlink = "https://raw.githubusercontent.com/echelonvanta/Scripts/refs/heads/main/Evade%20AutoFarm/autofarm"
 local success, response = pcall(function()
     return game:HttpGet(scriptlink)
 end)
