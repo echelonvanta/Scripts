@@ -1,0 +1,228 @@
+local Players = game:GetService("Players")
+local Workspace = game:GetService("Workspace")
+local RunService = game:GetService("RunService")
+local TweenService = game:GetService("TweenService")
+local UserInputService = game:GetService("UserInputService")
+local VirtualUser = game:GetService("VirtualUser")
+local LocalPlayer = Players.LocalPlayer
+
+-- Anti-AFK
+warn("Anti afk running")
+LocalPlayer.Idled:Connect(function()
+    warn("Anti afk ran")
+    VirtualUser:CaptureController()
+    VirtualUser:ClickButton2(Vector2.new())
+end)
+
+-- GUI Kurulumu
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Parent = game:GetService("CoreGui")
+ScreenGui.Name = "EchelonCheatGUI"
+ScreenGui.ResetOnSpawn = false
+ScreenGui.IgnoreGuiInset = true
+ScreenGui.DisplayOrder = 1000
+
+local Frame = Instance.new("Frame")
+Frame.Size = UDim2.new(0, 250, 0, 150)
+Frame.Position = UDim2.new(0.5, -125, 0.5, -75)
+Frame.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+Frame.BorderSizePixel = 0
+Frame.Parent = ScreenGui
+
+local UICorner = Instance.new("UICorner")
+UICorner.CornerRadius = UDim.new(0, 12)
+UICorner.Parent = Frame
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.Color = Color3.fromRGB(150, 0, 255)
+UIStroke.Thickness = 2
+UIStroke.Transparency = 0.5
+UIStroke.Parent = Frame
+
+-- Echelon Yazısı
+local EchelonLabel = Instance.new("TextLabel")
+EchelonLabel.Size = UDim2.new(0, 120, 0, 25)
+EchelonLabel.Position = UDim2.new(0, 10, 0, 8)
+EchelonLabel.BackgroundTransparency = 1
+EchelonLabel.Text = "Echelon"
+EchelonLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+EchelonLabel.TextSize = 18
+EchelonLabel.Font = Enum.Font.GothamBold
+EchelonLabel.Parent = Frame
+
+local EchelonGlow = Instance.new("UIGradient")
+EchelonGlow.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 0, 0)),
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(150, 0, 255)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(100, 0, 150))
+})
+EchelonGlow.Parent = EchelonLabel
+local tweenEchelon = TweenService:Create(EchelonGlow, TweenInfo.new(2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut, -1, true), {Rotation = 360})
+tweenEchelon:Play()
+
+-- Kapatma Butonu
+local CloseButton = Instance.new("TextButton")
+CloseButton.Size = UDim2.new(0, 25, 0, 25)
+CloseButton.Position = UDim2.new(1, -35, 0, 8)
+CloseButton.BackgroundColor3 = Color3.fromRGB(100, 0, 150)
+CloseButton.Text = "X"
+CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+CloseButton.TextSize = 14
+CloseButton.Font = Enum.Font.GothamBold
+CloseButton.Parent = Frame
+
+local CloseCorner = Instance.new("UICorner")
+CloseCorner.CornerRadius = UDim.new(0, 5)
+CloseCorner.Parent = CloseButton
+
+-- Küçültme Butonu
+local MinimizeButton = Instance.new("TextButton")
+MinimizeButton.Size = UDim2.new(0, 25, 0, 25)
+MinimizeButton.Position = UDim2.new(1, -65, 0, 8)
+MinimizeButton.BackgroundColor3 = Color3.fromRGB(50, 0, 75)
+MinimizeButton.Text = "-"
+MinimizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+MinimizeButton.TextSize = 14
+MinimizeButton.Font = Enum.Font.GothamBold
+MinimizeButton.Parent = Frame
+
+local MinimizeCorner = Instance.new("UICorner")
+MinimizeCorner.CornerRadius = UDim.new(0, 5)
+MinimizeCorner.Parent = MinimizeButton
+
+-- Auto Farm Butonu
+local AutoFarmButton = Instance.new("TextButton")
+AutoFarmButton.Size = UDim2.new(0, 210, 0, 40)
+AutoFarmButton.Position = UDim2.new(0, 20, 0, 40)
+AutoFarmButton.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+AutoFarmButton.Text = "Auto Farm: OFF"
+AutoFarmButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+AutoFarmButton.TextSize = 14
+AutoFarmButton.Font = Enum.Font.Gotham
+AutoFarmButton.Parent = Frame
+
+local AutoFarmCorner = Instance.new("UICorner")
+AutoFarmCorner.CornerRadius = UDim.new(0, 8)
+AutoFarmCorner.Parent = AutoFarmButton
+
+local AutoFarmGlow = Instance.new("UIStroke")
+AutoFarmGlow.Color = Color3.fromRGB(150, 0, 255)
+AutoFarmGlow.Thickness = 1.5
+AutoFarmGlow.Transparency = 0.5
+AutoFarmGlow.Parent = AutoFarmButton
+
+AutoFarmButton.MouseEnter:Connect(function()
+    TweenService:Create(AutoFarmButton, TweenInfo.new(0.3), {Size = UDim2.new(0, 215, 0, 42)}):Play()
+    TweenService:Create(AutoFarmGlow, TweenInfo.new(0.3), {Transparency = 0}):Play()
+end)
+AutoFarmButton.MouseLeave:Connect(function()
+    TweenService:Create(AutoFarmButton, TweenInfo.new(0.3), {Size = UDim2.new(0, 210, 0, 40)}):Play()
+    TweenService:Create(AutoFarmGlow, TweenInfo.new(0.3), {Transparency = 0.5}):Play()
+end)
+
+-- GUI Sürükleme
+local dragging
+local dragInput
+local dragStart
+local startPos
+
+local function update(input)
+    local delta = input.Position - dragStart
+    Frame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+end
+
+Frame.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        dragging = true
+        dragStart = input.Position
+        startPos = Frame.Position
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragging = false
+            end
+        end)
+    end
+end)
+
+Frame.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+        dragInput = input
+    end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+    if input == dragInput and dragging then
+        update(input)
+    end
+end)
+
+-- Değişkenler
+local AutoFarmActive = false
+
+-- Auto Farm Fonksiyonu
+AutoFarmButton.MouseButton1Click:Connect(function()
+    AutoFarmActive = not AutoFarmActive
+    if AutoFarmActive then
+        AutoFarmButton.Text = "Auto Farm: ON"
+        AutoFarmButton.BackgroundColor3 = Color3.fromRGB(150, 0, 255)
+        spawn(function()
+            while AutoFarmActive do
+                for i, v in pairs(Workspace:GetChildren()) do
+                    if v.ClassName == "Model" and (v:FindFirstChild("Container") or v.Name == "PortCraneOversized") then
+                        v:Destroy()
+                    end
+                end
+                task.wait(1)
+            end
+        end)
+        spawn(function()
+            while AutoFarmActive do
+                local hum = LocalPlayer.Character and LocalPlayer.Character.Humanoid
+                if not hum then return end
+                local car = hum.SeatPart and hum.SeatPart.Parent
+                if not car then return end
+                car.PrimaryPart = car.Body:FindFirstChild("#Weight")
+                if not getfenv().first then
+                    if Workspace.Workspace:FindFirstChild("Buildings") then
+                        Workspace.Workspace.Buildings:Destroy()
+                    end
+                    car:PivotTo(CFrame.new(Vector3.new(-7594.541015625, -3.513848304748535, 5130.95263671875), Vector3.new(-6205.29833984375, -3.5030133724212646, 8219.853515625)))
+                    task.wait(0.1)
+                end
+                car.PrimaryPart.Velocity = Vector3.new(0, 0, 0)
+                getfenv().first = true
+                local location = Vector3.new(-6205.29833984375, 100, 8219.853515625)
+                repeat
+                    task.wait()
+                    mathlock = 550
+                    car.PrimaryPart.Velocity = car.PrimaryPart.CFrame.LookVector * mathlock
+                    car:PivotTo(CFrame.new(car.PrimaryPart.Position, location))
+                until LocalPlayer:DistanceFromCharacter(location) < 50 or not AutoFarmActive
+                car.PrimaryPart.Velocity = Vector3.new(0, 0, 0)
+                location = Vector3.new(-7594.541015625, 100, 5130.95263671875)
+                repeat
+                    task.wait()
+                    mathlock = 550
+                    car.PrimaryPart.Velocity = car.PrimaryPart.CFrame.LookVector * mathlock
+                    car:PivotTo(CFrame.new(car.PrimaryPart.Position, location))
+                until LocalPlayer:DistanceFromCharacter(location) < 50 or not AutoFarmActive
+                car.PrimaryPart.Velocity = Vector3.new(0, 0, 0)
+            end
+        end)
+    else
+        AutoFarmButton.Text = "Auto Farm: OFF"
+        AutoFarmButton.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    end
+end)
+
+-- Buton İşlevleri
+CloseButton.MouseButton1Click:Connect(function()
+    ScreenGui:Destroy()
+end)
+
+MinimizeButton.MouseButton1Click:Connect(function()
+    Minimized = not Minimized
+    MinimizeButton.Text = Minimized and "+" or "-"
+    AutoFarmButton.Visible = not Minimized
+    Frame.Size = Minimized and UDim2.new(0, 250, 0, 40) or UDim2.new(0, 250, 0, 150)
+end)
