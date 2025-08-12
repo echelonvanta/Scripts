@@ -1,19 +1,9 @@
---[[ 
- GUI with 2 tabs:
- 1) Package giver: select type + variant and fire GivePackageToPlayer
- 2) Autofarm: spam DiamondOmega and every 0.5s call SellAllItems
-
- Note on naming convention:
-  - Normal  -> "<Base> Package"
-  - Gold    -> "Gold <Base> Package"
-  - Diamond -> "Diamond<Base> Package"   -- without space
-]]
-
 ----------------------------------------------------------------
 -- Services and remotes
 ----------------------------------------------------------------
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local UserInputService = game:GetService("UserInputService")
 
 local REMOTE_GIVE = ReplicatedStorage:WaitForChild("GivePackageToPlayer")
 local REMOTE_SELL = ReplicatedStorage:WaitForChild("SellAllItems")
@@ -25,7 +15,6 @@ local function endsWithPackage(name)
 	return name:sub(-8) == " Package"
 end
 
--- recursively collect all names
 local function collectAllNamesRecursive(parent, set)
 	for _,child in ipairs(parent:GetChildren()) do
 		if endsWithPackage(child.Name) then
@@ -90,6 +79,46 @@ local function composeName(base, variant)
 end
 
 ----------------------------------------------------------------
+-- Draggable helper function
+----------------------------------------------------------------
+local function makeDraggable(gui)
+	local dragging = false
+	local dragInput, dragStart, startPos
+
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			local delta = input.Position - dragStart
+			gui.Position = UDim2.new(
+				startPos.X.Scale,
+				startPos.X.Offset + delta.X,
+				startPos.Y.Scale,
+				startPos.Y.Offset + delta.Y
+			)
+		end
+	end)
+end
+
+----------------------------------------------------------------
 -- GUI shell
 ----------------------------------------------------------------
 local player = Players.LocalPlayer
@@ -112,27 +141,8 @@ pad.PaddingBottom = UDim.new(0, 12)
 pad.PaddingLeft = UDim.new(0, 12)
 pad.PaddingRight = UDim.new(0, 12)
 
--- drag
-do
-	local dragging = false
-	local dragStart, startPos
-	frame.InputBegan:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseButton1 then
-			dragging = true
-			dragStart = input.Position
-			startPos = frame.Position
-			input.Changed:Connect(function()
-				if input.UserInputState == Enum.UserInputState.End then dragging = false end
-			end)
-		end
-	end)
-	frame.InputChanged:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseMovement and dragging then
-			local delta = input.Position - dragStart
-			frame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-		end
-	end)
-end
+-- make the frame draggable using the helper
+makeDraggable(frame)
 
 -- header
 local title = Instance.new("TextLabel")
@@ -284,7 +294,6 @@ local function setVariantButtonsEnabled(info)
 end
 
 local function refreshList()
-	-- remove all buttons
 	for _,c in ipairs(list:GetChildren()) do
 		if c:IsA("TextButton") then c:Destroy() end
 	end
@@ -395,7 +404,6 @@ farmStatus.TextColor3 = Color3.fromRGB(210,210,210)
 farmStatus.Text = "Ready."
 farmStatus.Parent = farmPage
 
--- loops
 local running = false
 local giverThread, sellThread
 
@@ -403,7 +411,6 @@ local function startFarm()
 	if running then return end
 	running = true
 	farmStatus.Text = "Running..."
-	-- 0.01 give DiamondOmega Package
 	giverThread = task.spawn(function()
 		local name = "DiamondOmega Package"
 		while running do
@@ -411,7 +418,6 @@ local function startFarm()
 			task.wait(0.01)
 		end
 	end)
-	-- 0.5 sell
 	sellThread = task.spawn(function()
 		while running do
 			REMOTE_SELL:FireServer()
@@ -450,47 +456,3 @@ tabFarm.MouseButton1Click:Connect(function() showPage("farm") end)
 
 -- initial state
 showPage("giver")
-
-                                  local UserInputService = game:GetService("UserInputService")
-local gui = script.Parent -- Sürüklemek istediğin GUI örneği, örneğin Frame
-
-local dragging = false
-local dragInput
-local dragStart
-local startPos
-
-local function update(input)
-    local delta = input.Position - dragStart
-    gui.Position = UDim2.new(
-        startPos.X.Scale,
-        startPos.X.Offset + delta.X,
-        startPos.Y.Scale,
-        startPos.Y.Offset + delta.Y
-    )
-end
-
-gui.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-        dragging = true
-        dragStart = input.Position
-        startPos = gui.Position
-
-        input.Changed:Connect(function()
-            if input.UserInputState == Enum.UserInputState.End then
-                dragging = false
-            end
-        end)
-    end
-end)
-
-gui.InputChanged:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-        dragInput = input
-    end
-end)
-
-UserInputService.InputChanged:Connect(function(input)
-    if input == dragInput and dragging then
-        update(input)
-    end
-end)
