@@ -1,0 +1,28 @@
+local scripts = {
+    [117912363638950] = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/echelonvanta/Scripts/refs/heads/main/15k%20Glass%20Bridge/Script"))()
+    end,
+    [379269] = function()
+        loadstring(game:HttpGet("https://example.com/anotherScript.lua"))()
+    end
+}
+
+local function notify(title, text, duration)
+    pcall(function()
+        game.StarterGui:SetCore("SendNotification", {
+            Title = title;
+            Text = text;
+            Duration = duration or 5;
+        })
+    end)
+end
+
+local currentId = game.PlaceId
+
+if scripts[currentId] then
+    notify("✅ Game Supported", "Loading script...", 5)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/echelonvanta/Scripts/refs/heads/main/Midnight%20Chasers/loading"))()
+    scripts[currentId]()
+else
+    notify("❌ Game Not Supported", "No script found for this game.", 5)
+end
