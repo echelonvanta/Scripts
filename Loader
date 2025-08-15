@@ -2,8 +2,8 @@ local scripts = {
     [117912363638950] = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/echelonvanta/Scripts/refs/heads/main/15k%20Glass%20Bridge/Script"))()
     end,
-    [379269] = function()
-        loadstring(game:HttpGet("https://example.com/anotherScript.lua"))()
+    [13822562292] = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/echelonvanta/Scripts/refs/heads/main/Midnight%20Chasers/script"))()
     end,
     [130411997255345] = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/echelonvanta/Scripts/refs/heads/main/Rng%20Games/Package%20Rng"))()
