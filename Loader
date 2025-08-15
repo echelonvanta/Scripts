@@ -4,6 +4,9 @@ local scripts = {
     end,
     [379269] = function()
         loadstring(game:HttpGet("https://example.com/anotherScript.lua"))()
+    end,
+    [130411997255345] = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/echelonvanta/Scripts/refs/heads/main/Rng%20Games/Package%20Rng"))()
     end
 }
 
@@ -18,11 +21,12 @@ local function notify(title, text, duration)
 end
 
 local currentId = game.PlaceId
+local gameName = game:GetService("MarketplaceService"):GetProductInfo(currentId).Name
 
 if scripts[currentId] then
-    notify("✅ Game Supported", "Loading script...", 5)
+    notify("✅ Game Supported", "Loading script for: " .. gameName, 5)
     loadstring(game:HttpGet("https://raw.githubusercontent.com/echelonvanta/Scripts/refs/heads/main/Midnight%20Chasers/loading"))()
     scripts[currentId]()
 else
-    notify("❌ Game Not Supported", "No script found for this game.", 5)
+    notify("❌ Game Not Supported", "No script found for: " .. gameName, 5)
 end
