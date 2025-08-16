@@ -1,0 +1,126 @@
+-- Modern GUI with Minimize, Close, Label and Buttons
+-- Made by Echelon
+
+-- ScreenGui oluştur
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Parent = game:GetService("CoreGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+-- Ana Frame
+local MainFrame = Instance.new("Frame")
+MainFrame.Size = UDim2.new(0, 300, 0, 250)
+MainFrame.Position = UDim2.new(0.5, -150, 0.5, -125)
+MainFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+MainFrame.BorderSizePixel = 0
+MainFrame.Parent = ScreenGui
+MainFrame.Active = true
+MainFrame.Draggable = true
+
+-- Köşeleri yuvarlak yap
+local UICorner = Instance.new("UICorner")
+UICorner.CornerRadius = UDim.new(0, 12)
+UICorner.Parent = MainFrame
+
+-- Echelon Yazısı (Sol üst köşe)
+local Title = Instance.new("TextLabel")
+Title.Size = UDim2.new(0, 120, 0, 30)
+Title.Position = UDim2.new(0, 10, 0, 5)
+Title.BackgroundTransparency = 1
+Title.Text = "Echelon"
+Title.TextColor3 = Color3.fromRGB(0, 200, 255)
+Title.TextXAlignment = Enum.TextXAlignment.Left
+Title.Font = Enum.Font.GothamBold
+Title.TextSize = 18
+Title.Parent = MainFrame
+
+-- Kapatma butonu (X)
+local CloseButton = Instance.new("TextButton")
+CloseButton.Size = UDim2.new(0, 30, 0, 30)
+CloseButton.Position = UDim2.new(1, -35, 0, 5)
+CloseButton.Text = "X"
+CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+CloseButton.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+CloseButton.Parent = MainFrame
+
+local CloseCorner = Instance.new("UICorner")
+CloseCorner.CornerRadius = UDim.new(0, 8)
+CloseCorner.Parent = CloseButton
+
+CloseButton.MouseButton1Click:Connect(function()
+    ScreenGui:Destroy()
+end)
+
+-- Minimize butonu (−)
+local MinimizeButton = Instance.new("TextButton")
+MinimizeButton.Size = UDim2.new(0, 30, 0, 30)
+MinimizeButton.Position = UDim2.new(1, -70, 0, 5)
+MinimizeButton.Text = "-"
+MinimizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+MinimizeButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+MinimizeButton.Parent = MainFrame
+
+local MinCorner = Instance.new("UICorner")
+MinCorner.CornerRadius = UDim.new(0, 8)
+MinCorner.Parent = MinimizeButton
+
+-- İçerik Frame (butonların içinde olduğu yer)
+local ContentFrame = Instance.new("Frame")
+ContentFrame.Size = UDim2.new(1, -20, 1, -50)
+ContentFrame.Position = UDim2.new(0, 10, 0, 40)
+ContentFrame.BackgroundTransparency = 1
+ContentFrame.Parent = MainFrame
+
+-- Minimize fonksiyonu
+local minimized = false
+MinimizeButton.MouseButton1Click:Connect(function()
+    minimized = not minimized
+    if minimized then
+        ContentFrame.Visible = false
+        MainFrame.Size = UDim2.new(0, 300, 0, 50)
+    else
+        ContentFrame.Visible = true
+        MainFrame.Size = UDim2.new(0, 300, 0, 250)
+    end
+end)
+
+-- Buton fonksiyonu
+local function createButton(name, yPos, callback)
+    local btn = Instance.new("TextButton")
+    btn.Size = UDim2.new(0, 250, 0, 40)
+    btn.Position = UDim2.new(0.5, -125, 0, yPos)
+    btn.Text = name
+    btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    btn.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+    btn.Parent = ContentFrame
+    
+    local btnCorner = Instance.new("UICorner")
+    btnCorner.CornerRadius = UDim.new(0, 8)
+    btnCorner.Parent = btn
+    
+    btn.MouseButton1Click:Connect(callback)
+end
+
+-- Butonlar
+createButton("🟢 Give Marble", 10, function()
+    game:GetService("ReplicatedStorage"):WaitForChild("BuyWithPoints"):FireServer("MarbleFrame", 0)
+end)
+
+createButton("🔵 Give Push", 60, function()
+    game:GetService("ReplicatedStorage"):WaitForChild("BuyWithPoints"):FireServer("PushFrame", 0)
+end)
+
+createButton("🔴 Give Glass Maker", 110, function()
+    game:GetService("ReplicatedStorage"):WaitForChild("BuyWithPoints"):FireServer("GlassMakerFrame", 0)
+end)
+
+createButton("🟡 Glass View", 160, function()
+    for _, step in ipairs(workspace:GetChildren()) do
+        if step.Name == "Step" then
+            for _, obj in ipairs(step:GetChildren()) do
+                if obj.Name == "glass_weak" and obj:IsA("Model") then
+                    obj:Destroy()
+                end
+            end
+        end
+    end
+end)
