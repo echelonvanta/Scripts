@@ -1,4 +1,4 @@
-scripts = {
+local scripts = {
     [117912363638950] = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/echelonvanta/Scripts/refs/heads/main/15k%20Glass%20Bridge/Script"))()
     end,
