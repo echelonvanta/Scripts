@@ -1,0 +1,136 @@
+local runningReset = false
+local runningBomb = false
+
+local loopReset = nil
+local loopBomb = nil
+
+local targetPos = Vector3.new(258.75, -3.50, 15.41)
+
+local function resetCharacter()
+    local player = game.Players.LocalPlayer
+    if player.Character and player.Character:FindFirstChild("Humanoid") then
+        player.Character.Humanoid.Health = 0
+    end
+end
+
+local function teleportCharacter()
+    local player = game.Players.LocalPlayer
+    local char = player.Character or player.CharacterAdded:Wait()
+    local hrp = char:WaitForChild("HumanoidRootPart")
+    hrp.CFrame = CFrame.new(targetPos)
+end
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Parent = game:GetService("CoreGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+local MainFrame = Instance.new("Frame")
+MainFrame.Size = UDim2.new(0, 300, 0, 200)
+MainFrame.Position = UDim2.new(0.5, -150, 0.5, -100)
+MainFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+MainFrame.BorderSizePixel = 0
+MainFrame.Parent = ScreenGui
+MainFrame.Active = true
+MainFrame.Draggable = true
+
+local UICorner = Instance.new("UICorner")
+UICorner.CornerRadius = UDim.new(0, 12)
+UICorner.Parent = MainFrame
+
+local Title = Instance.new("TextLabel")
+Title.Size = UDim2.new(0, 120, 0, 30)
+Title.Position = UDim2.new(0, 10, 0, 5)
+Title.BackgroundTransparency = 1
+Title.Text = "Echelon"
+Title.TextColor3 = Color3.fromRGB(0, 200, 255)
+Title.TextXAlignment = Enum.TextXAlignment.Left
+Title.Font = Enum.Font.GothamBold
+Title.TextSize = 18
+Title.Parent = MainFrame
+
+local CloseButton = Instance.new("TextButton")
+CloseButton.Size = UDim2.new(0, 30, 0, 30)
+CloseButton.Position = UDim2.new(1, -35, 0, 5)
+CloseButton.Text = "X"
+CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+CloseButton.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+CloseButton.Parent = MainFrame
+
+local CloseCorner = Instance.new("UICorner")
+CloseCorner.CornerRadius = UDim.new(0, 8)
+CloseCorner.Parent = CloseButton
+
+CloseButton.MouseButton1Click:Connect(function()
+    ScreenGui:Destroy()
+    runningReset = false
+    runningBomb = false
+end)
+
+local ContentFrame = Instance.new("Frame")
+ContentFrame.Size = UDim2.new(1, -20, 1, -50)
+ContentFrame.Position = UDim2.new(0, 10, 0, 40)
+ContentFrame.BackgroundTransparency = 1
+ContentFrame.Parent = MainFrame
+
+local ToggleReset = Instance.new("TextButton")
+ToggleReset.Size = UDim2.new(0, 250, 0, 40)
+ToggleReset.Position = UDim2.new(0.5, -125, 0, 10)
+ToggleReset.Text = "Reset/Teleport: OFF"
+ToggleReset.TextColor3 = Color3.fromRGB(255, 255, 255)
+ToggleReset.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+ToggleReset.Parent = ContentFrame
+
+local btnCorner1 = Instance.new("UICorner")
+btnCorner1.CornerRadius = UDim.new(0, 8)
+btnCorner1.Parent = ToggleReset
+
+local ToggleBomb = Instance.new("TextButton")
+ToggleBomb.Size = UDim2.new(0, 250, 0, 40)
+ToggleBomb.Position = UDim2.new(0.5, -125, 0, 60)
+ToggleBomb.Text = "PlantBomb: OFF"
+ToggleBomb.TextColor3 = Color3.fromRGB(255, 255, 255)
+ToggleBomb.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+ToggleBomb.Parent = ContentFrame
+
+local btnCorner2 = Instance.new("UICorner")
+btnCorner2.CornerRadius = UDim.new(0, 8)
+btnCorner2.Parent = ToggleBomb
+
+-- Reset + Teleport Toggle
+ToggleReset.MouseButton1Click:Connect(function()
+    runningReset = not runningReset
+    if runningReset then
+        ToggleReset.Text = "Reset/Teleport: ON"
+        ToggleReset.BackgroundColor3 = Color3.fromRGB(0, 200, 0)
+        loopReset = task.spawn(function()
+            while runningReset do
+                resetCharacter()
+                local player = game.Players.LocalPlayer
+                player.CharacterAdded:Wait()
+                teleportCharacter()
+                task.wait(0.001)
+            end
+        end)
+    else
+        ToggleReset.Text = "Reset/Teleport: OFF"
+        ToggleReset.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+    end
+end)
+
+-- PlantBomb Toggle
+ToggleBomb.MouseButton1Click:Connect(function()
+    runningBomb = not runningBomb
+    if runningBomb then
+        ToggleBomb.Text = "PlantBomb: ON"
+        ToggleBomb.BackgroundColor3 = Color3.fromRGB(0, 200, 0)
+        loopBomb = task.spawn(function()
+            while runningBomb do
+                game:GetService("ReplicatedStorage").PlantBomb:FireServer()
+                task.wait(0.05)
+            end
+        end)
+    else
+        ToggleBomb.Text = "PlantBomb: OFF"
+        ToggleBomb.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+    end
+end)
