@@ -1,41 +1,63 @@
-
 local scripts = {
-    [117912363638950] = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/echelonvanta/Scripts/refs/heads/main/15k%20Glass%20Bridge/Script"))()
-    end,
-    [13822562292] = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/echelonvanta/Scripts/refs/heads/main/Midnight%20Chasers/script"))()
-    end,
-    [130411997255345] = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/echelonvanta/Scripts/refs/heads/main/Rng%20Games/Package%20Rng"))()
-    end,
-    [142823291] = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/echelonvanta/Scripts/refs/heads/main/Mm2/Script.lua"))()
-    end,
-    [123516846332753] = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/echelonvanta/Scripts/refs/heads/main/The%20Glass%20Bridge/Script"))()
-    end,
-    [132924924190132] = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/echelonvanta/Scripts/refs/heads/main/Get%20town/Script"))()
-    end,
+    [117912363638950] = {
+        name = "15k Glass Bridge",
+        load = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/echelonvanta/Scripts/refs/heads/main/15k%20Glass%20Bridge/Script"))()
+        end
+    },
+
+    [13822562292] = {
+        name = "Midnight Chasers",
+        load = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/echelonvanta/Scripts/refs/heads/main/Midnight%20Chasers/script"))()
+        end
+    },
+
+    [130411997255345] = {
+        name = "Package RNG",
+        load = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/echelonvanta/Scripts/refs/heads/main/Rng%20Games/Package%20Rng"))()
+        end
+    },
+
+    [142823291] = {
+        name = "Murder Mystery 2",
+        load = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/echelonvanta/Scripts/refs/heads/main/Mm2/Script.lua"))()
+        end
+    },
+
+    [123516846332753] = {
+        name = "The Glass Bridge",
+        load = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/echelonvanta/Scripts/refs/heads/main/The%20Glass%20Bridge/Script"))()
+        end
+    },
+
+    [132924924190132] = {
+        name = "Get Town",
+        load = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/echelonvanta/Scripts/refs/heads/main/Get%20town/Script"))()
+        end
+    },
 }
 
 local function notify(title, text, duration)
     pcall(function()
         game.StarterGui:SetCore("SendNotification", {
-            Title = title;
-            Text = text;
-            Duration = duration or 5;
+            Title = title,
+            Text = text,
+            Duration = duration or 5
         })
     end)
 end
 
-local currentId = game.PlaceId
-local gameName = game:GetService("MarketplaceService"):GetProductInfo(currentId).Name
+local id = game.PlaceId
+local data = scripts[id]
 
-if scripts[currentId] then
-    notify("✅ Game Supported", "Loading script for: " .. gameName, 5)
-    scripts[currentId]()
+if data then
+    notify("✅ Game Supported", "Loading: " .. data.name, 5)
+    data.load()
 else
-    notify("❌ Game Not Supported", "No script found for: " .. gameName, 5)
+    notify("❌ Game Not Supported", "PlaceId: " .. id, 5)
 end
