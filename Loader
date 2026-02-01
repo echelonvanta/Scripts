@@ -20,12 +20,6 @@ local scripts = {
         end
     },
 
-    [142823291] = {
-        name = "Murder Mystery 2",
-        load = function()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/echelonvanta/Scripts/refs/heads/main/Mm2/Script.lua"))()
-        end
-    },
 
     [123516846332753] = {
         name = "The Glass Bridge",
