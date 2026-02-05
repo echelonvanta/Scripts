@@ -17,77 +17,46 @@ local UIToolsGradient_2 = Instance.new("UIGradient")
 local ImageLabel_3 = Instance.new("ImageLabel")
 local Animationsbutton = Instance.new("ImageButton")
 local UIGradient = Instance.new("UIGradient")
-local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
 local Emotebutton = Instance.new("ImageButton")
 local UIGradient_2 = Instance.new("UIGradient")
-local UIAspectRatioConstraint_2 = Instance.new("UIAspectRatioConstraint")
 local Settingsbutton = Instance.new("ImageButton")
 local UIGradient_3 = Instance.new("UIGradient")
-local UIAspectRatioConstraint_3 = Instance.new("UIAspectRatioConstraint")
 local CloseButton = Instance.new("ImageButton")
 local UIGradient_4 = Instance.new("UIGradient")
-local UIAspectRatioConstraint_4 = Instance.new("UIAspectRatioConstraint")
 local TextLabel = Instance.new("TextLabel")
 local UIGradient_5 = Instance.new("UIGradient")
-local UITextSizeConstraint = Instance.new("UITextSizeConstraint")
-local UIAspectRatioConstraint_5 = Instance.new("UIAspectRatioConstraint")
 local ImageLabel_4 = Instance.new("ImageLabel")
 local ImageLabel_5 = Instance.new("ImageLabel")
 local TextLabel_2 = Instance.new("TextLabel")
 local UIGradient_6 = Instance.new("UIGradient")
-local UITextSizeConstraint_2 = Instance.new("UITextSizeConstraint")
-local UIAspectRatioConstraint_6 = Instance.new("UIAspectRatioConstraint")
-local UIAspectRatioConstraint_7 = Instance.new("UIAspectRatioConstraint")
 local tab2 = Instance.new("ScrollingFrame")
 local emoteframe = Instance.new("Frame")
 local UICorner_3 = Instance.new("UICorner")
 local UIPadding_3 = Instance.new("UIPadding")
 local UIToolsGradient_3 = Instance.new("UIGradient")
 local emotename = Instance.new("TextLabel")
-local UITextSizeConstraint_3 = Instance.new("UITextSizeConstraint")
-local UIAspectRatioConstraint_8 = Instance.new("UIAspectRatioConstraint")
 local playbutton = Instance.new("ImageButton")
-local UIAspectRatioConstraint_9 = Instance.new("UIAspectRatioConstraint")
-local UIAspectRatioConstraint_10 = Instance.new("UIAspectRatioConstraint")
-local UIAspectRatioConstraint_11 = Instance.new("UIAspectRatioConstraint")
 local tab1 = Instance.new("ScrollingFrame")
 local Animationsframe = Instance.new("Frame")
 local UICorner_4 = Instance.new("UICorner")
 local UIPadding_4 = Instance.new("UIPadding")
 local UIToolsGradient_4 = Instance.new("UIGradient")
 local Animationname = Instance.new("TextLabel")
-local UITextSizeConstraint_4 = Instance.new("UITextSizeConstraint")
-local UIAspectRatioConstraint_12 = Instance.new("UIAspectRatioConstraint")
 local ApplyButton = Instance.new("ImageButton")
-local UIAspectRatioConstraint_13 = Instance.new("UIAspectRatioConstraint")
 local FavoriteButton = Instance.new("ImageButton")
-local UIAspectRatioConstraint_14 = Instance.new("UIAspectRatioConstraint")
-local UIAspectRatioConstraint_15 = Instance.new("UIAspectRatioConstraint")
-local UIAspectRatioConstraint_16 = Instance.new("UIAspectRatioConstraint")
 local tab3 = Instance.new("ScrollingFrame")
 local settingsframe = Instance.new("Frame")
 local settingname = Instance.new("TextLabel")
 local UIGradient_7 = Instance.new("UIGradient")
-local UITextSizeConstraint_5 = Instance.new("UITextSizeConstraint")
-local UIAspectRatioConstraint_17 = Instance.new("UIAspectRatioConstraint")
 local settingname_2 = Instance.new("TextLabel")
 local UIGradient_8 = Instance.new("UIGradient")
-local UITextSizeConstraint_6 = Instance.new("UITextSizeConstraint")
-local UIAspectRatioConstraint_18 = Instance.new("UIAspectRatioConstraint")
 local ImageLabel_6 = Instance.new("ImageLabel")
 local settingname_3 = Instance.new("TextLabel")
 local UIGradient_9 = Instance.new("UIGradient")
-local UITextSizeConstraint_7 = Instance.new("UITextSizeConstraint")
-local UIAspectRatioConstraint_19 = Instance.new("UIAspectRatioConstraint")
-local UIAspectRatioConstraint_20 = Instance.new("UIAspectRatioConstraint")
-local UIAspectRatioConstraint_21 = Instance.new("UIAspectRatioConstraint")
-local UIAspectRatioConstraint_22 = Instance.new("UIAspectRatioConstraint")
 local ToggleFrame = Instance.new("Frame")
 local UIToolsGradient_5 = Instance.new("UIGradient")
 local ImageButton = Instance.new("ImageButton")
 local ImageLabel_7 = Instance.new("ImageLabel")
-local UIAspectRatioConstraint_23 = Instance.new("UIAspectRatioConstraint")
-local UIAspectRatioConstraint_24 = Instance.new("UIAspectRatioConstraint")
 
 --Properties:
 
@@ -100,7 +69,7 @@ echframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 echframe.BorderColor3 = Color3.fromRGB(0, 0, 0)
 echframe.BorderSizePixel = 0
 echframe.Position = UDim2.new(0.227031827, 0, 0.194695175, 0)
-echframe.Size = UDim2.new(0.636257529, 0, 0.59678328, 0)
+echframe.Size = UDim2.new(0, 763, 0, 423)
 
 UIPadding.Parent = echframe
 
@@ -138,7 +107,7 @@ tabsframe.Parent = echframe
 tabsframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 tabsframe.BorderColor3 = Color3.fromRGB(0, 0, 0)
 tabsframe.BorderSizePixel = 0
-tabsframe.Size = UDim2.new(1, 0, 0.163120583, 0)
+tabsframe.Size = UDim2.new(0, 763, 0, 69)
 
 UICorner_2.Parent = tabsframe
 
@@ -166,16 +135,13 @@ Animationsbutton.BackgroundTransparency = 1.000
 Animationsbutton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Animationsbutton.BorderSizePixel = 0
 Animationsbutton.Position = UDim2.new(0.450290978, 0, 0.0724637657, 0)
-Animationsbutton.Size = UDim2.new(0.096985586, 0, 0.98550725, 0)
+Animationsbutton.Size = UDim2.new(0, 74, 0, 68)
 Animationsbutton.Image = "rbxassetid://16884179038"
 Animationsbutton.ImageRectOffset = Vector2.new(440, 908)
 Animationsbutton.ImageRectSize = Vector2.new(108, 108)
 
 UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(32, 60, 111)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(132, 132, 132))}
 UIGradient.Parent = Animationsbutton
-
-UIAspectRatioConstraint.Parent = Animationsbutton
-UIAspectRatioConstraint.AspectRatio = 1.088
 
 Emotebutton.Name = "Emotebutton"
 Emotebutton.Parent = tabsframe
@@ -184,16 +150,13 @@ Emotebutton.BackgroundTransparency = 1.000
 Emotebutton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Emotebutton.BorderSizePixel = 0
 Emotebutton.Position = UDim2.new(0.575928211, 0, 0.173913047, 0)
-Emotebutton.Size = UDim2.new(0.0799475759, 0, 0.782608688, 0)
+Emotebutton.Size = UDim2.new(0, 61, 0, 54)
 Emotebutton.Image = "rbxassetid://16884179279"
 Emotebutton.ImageRectOffset = Vector2.new(634, 198)
 Emotebutton.ImageRectSize = Vector2.new(54, 54)
 
 UIGradient_2.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(32, 60, 111)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(132, 132, 132))}
 UIGradient_2.Parent = Emotebutton
-
-UIAspectRatioConstraint_2.Parent = Emotebutton
-UIAspectRatioConstraint_2.AspectRatio = 1.130
 
 Settingsbutton.Name = "Settingsbutton"
 Settingsbutton.Parent = tabsframe
@@ -202,16 +165,13 @@ Settingsbutton.BackgroundTransparency = 1.000
 Settingsbutton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Settingsbutton.BorderSizePixel = 0
 Settingsbutton.Position = UDim2.new(0.685869038, 0, -0.00720347511, 0)
-Settingsbutton.Size = UDim2.new(0.100917429, 0, 1.0869565, 0)
+Settingsbutton.Size = UDim2.new(0, 77, 0, 75)
 Settingsbutton.Image = "rbxassetid://16884179038"
 Settingsbutton.ImageRectOffset = Vector2.new(908, 330)
 Settingsbutton.ImageRectSize = Vector2.new(108, 108)
 
 UIGradient_3.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(32, 60, 111)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(132, 132, 132))}
 UIGradient_3.Parent = Settingsbutton
-
-UIAspectRatioConstraint_3.Parent = Settingsbutton
-UIAspectRatioConstraint_3.AspectRatio = 1.027
 
 CloseButton.Name = "CloseButton"
 CloseButton.Parent = tabsframe
@@ -220,7 +180,7 @@ CloseButton.BackgroundTransparency = 1.000
 CloseButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 CloseButton.BorderSizePixel = 0
 CloseButton.Position = UDim2.new(0.901837707, 0, -0.0724637657, 0)
-CloseButton.Size = UDim2.new(0.100917429, 0, 1.13043475, 0)
+CloseButton.Size = UDim2.new(0, 77, 0, 78)
 CloseButton.Image = "rbxassetid://16167593004"
 CloseButton.ImageRectOffset = Vector2.new(440, 578)
 CloseButton.ImageRectSize = Vector2.new(108, 108)
@@ -228,31 +188,20 @@ CloseButton.ImageRectSize = Vector2.new(108, 108)
 UIGradient_4.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(32, 60, 111)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(132, 132, 132))}
 UIGradient_4.Parent = CloseButton
 
-UIAspectRatioConstraint_4.Parent = CloseButton
-UIAspectRatioConstraint_4.AspectRatio = 0.987
-
 TextLabel.Parent = tabsframe
 TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel.BackgroundTransparency = 1.000
 TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.BorderSizePixel = 0
 TextLabel.Position = UDim2.new(-0.0104849283, 0, 0.130434781, 0)
-TextLabel.Size = UDim2.new(0.246395811, 0, 0.608695626, 0)
+TextLabel.Size = UDim2.new(0, 188, 0, 42)
 TextLabel.Font = Enum.Font.SourceSansBold
 TextLabel.Text = "Echelon"
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.TextScaled = true
 TextLabel.TextSize = 58.000
-TextLabel.TextWrapped = true
 
 UIGradient_5.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(32, 60, 111)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(132, 132, 132))}
 UIGradient_5.Parent = TextLabel
-
-UITextSizeConstraint.Parent = TextLabel
-UITextSizeConstraint.MaxTextSize = 58
-
-UIAspectRatioConstraint_5.Parent = TextLabel
-UIAspectRatioConstraint_5.AspectRatio = 4.476
 
 ImageLabel_4.Parent = tabsframe
 ImageLabel_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -282,25 +231,14 @@ TextLabel_2.BackgroundTransparency = 1.000
 TextLabel_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel_2.BorderSizePixel = 0
 TextLabel_2.Position = UDim2.new(0.155963302, 0, 0.130434781, 0)
-TextLabel_2.Size = UDim2.new(0.262123197, 0, 0.724637687, 0)
+TextLabel_2.Size = UDim2.new(0, 200, 0, 50)
 TextLabel_2.Font = Enum.Font.SourceSansBold
 TextLabel_2.Text = "v1.0"
 TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_2.TextScaled = true
 TextLabel_2.TextSize = 47.000
-TextLabel_2.TextWrapped = true
 
 UIGradient_6.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(32, 60, 111)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(132, 132, 132))}
 UIGradient_6.Parent = TextLabel_2
-
-UITextSizeConstraint_2.Parent = TextLabel_2
-UITextSizeConstraint_2.MaxTextSize = 47
-
-UIAspectRatioConstraint_6.Parent = TextLabel_2
-UIAspectRatioConstraint_6.AspectRatio = 4.000
-
-UIAspectRatioConstraint_7.Parent = tabsframe
-UIAspectRatioConstraint_7.AspectRatio = 11.058
 
 tab2.Name = "tab2"
 tab2.Parent = echframe
@@ -310,7 +248,7 @@ tab2.BackgroundTransparency = 1.000
 tab2.BorderColor3 = Color3.fromRGB(0, 0, 0)
 tab2.BorderSizePixel = 0
 tab2.Position = UDim2.new(0, 0, 0.180858031, 0)
-tab2.Size = UDim2.new(0.998689413, 0, 0.817966938, 0)
+tab2.Size = UDim2.new(0, 762, 0, 346)
 tab2.Visible = false
 
 emoteframe.Name = "emoteframe"
@@ -336,19 +274,13 @@ emotename.BackgroundTransparency = 1.000
 emotename.BorderColor3 = Color3.fromRGB(0, 0, 0)
 emotename.BorderSizePixel = 0
 emotename.Position = UDim2.new(0.168783128, 0, 0.0431034006, 0)
-emotename.Size = UDim2.new(0.635714293, 0, 0.447368413, 0)
+emotename.Size = UDim2.new(0, 89, 0, 51)
 emotename.Font = Enum.Font.SourceSansBold
 emotename.Text = "Name"
 emotename.TextColor3 = Color3.fromRGB(255, 255, 255)
 emotename.TextScaled = true
 emotename.TextSize = 21.000
 emotename.TextWrapped = true
-
-UITextSizeConstraint_3.Parent = emotename
-UITextSizeConstraint_3.MaxTextSize = 42
-
-UIAspectRatioConstraint_8.Parent = emotename
-UIAspectRatioConstraint_8.AspectRatio = 1.745
 
 playbutton.Name = "playbutton"
 playbutton.Parent = emoteframe
@@ -357,19 +289,10 @@ playbutton.BackgroundTransparency = 1.000
 playbutton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 playbutton.BorderSizePixel = 0
 playbutton.Position = UDim2.new(0.318518519, 0, 0.482758611, 0)
-playbutton.Size = UDim2.new(0.342857152, 0, 0.464912295, 0)
+playbutton.Size = UDim2.new(0, 48, 0, 53)
 playbutton.Image = "rbxassetid://16884179507"
 playbutton.ImageRectOffset = Vector2.new(578, 400)
 playbutton.ImageRectSize = Vector2.new(48, 48)
-
-UIAspectRatioConstraint_9.Parent = playbutton
-UIAspectRatioConstraint_9.AspectRatio = 0.906
-
-UIAspectRatioConstraint_10.Parent = emoteframe
-UIAspectRatioConstraint_10.AspectRatio = 1.228
-
-UIAspectRatioConstraint_11.Parent = tab2
-UIAspectRatioConstraint_11.AspectRatio = 2.202
 
 tab1.Name = "tab1"
 tab1.Parent = echframe
@@ -379,7 +302,7 @@ tab1.BackgroundTransparency = 1.000
 tab1.BorderColor3 = Color3.fromRGB(0, 0, 0)
 tab1.BorderSizePixel = 0
 tab1.Position = UDim2.new(0, 0, 0.180858031, 0)
-tab1.Size = UDim2.new(0.998689413, 0, 0.817966938, 0)
+tab1.Size = UDim2.new(0, 762, 0, 346)
 
 Animationsframe.Name = "Animationsframe"
 Animationsframe.Parent = tab1
@@ -404,19 +327,12 @@ Animationname.BackgroundTransparency = 1.000
 Animationname.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Animationname.BorderSizePixel = 0
 Animationname.Position = UDim2.new(0.0962962955, 0, 0.068965517, 0)
-Animationname.Size = UDim2.new(0.75555557, 0, 0.37931034, 0)
+Animationname.Size = UDim2.new(0, 102, 0, 44)
 Animationname.Font = Enum.Font.SourceSansBold
 Animationname.Text = "Name"
 Animationname.TextColor3 = Color3.fromRGB(255, 255, 255)
-Animationname.TextScaled = true
 Animationname.TextSize = 21.000
 Animationname.TextWrapped = true
-
-UITextSizeConstraint_4.Parent = Animationname
-UITextSizeConstraint_4.MaxTextSize = 21
-
-UIAspectRatioConstraint_12.Parent = Animationname
-UIAspectRatioConstraint_12.AspectRatio = 2.318
 
 ApplyButton.Name = "ApplyButton"
 ApplyButton.Parent = Animationsframe
@@ -425,13 +341,10 @@ ApplyButton.BackgroundTransparency = 1.000
 ApplyButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 ApplyButton.BorderSizePixel = 0
 ApplyButton.Position = UDim2.new(0.0962962955, 0, 0.568965495, 0)
-ApplyButton.Size = UDim2.new(0.311111122, 0, 0.275862068, 0)
+ApplyButton.Size = UDim2.new(0, 42, 0, 32)
 ApplyButton.Image = "rbxassetid://16884179279"
 ApplyButton.ImageRectOffset = Vector2.new(740, 852)
 ApplyButton.ImageRectSize = Vector2.new(48, 48)
-
-UIAspectRatioConstraint_13.Parent = ApplyButton
-UIAspectRatioConstraint_13.AspectRatio = 1.312
 
 FavoriteButton.Name = "FavoriteButton"
 FavoriteButton.Parent = Animationsframe
@@ -440,19 +353,10 @@ FavoriteButton.BackgroundTransparency = 1.000
 FavoriteButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 FavoriteButton.BorderSizePixel = 0
 FavoriteButton.Position = UDim2.new(0.474074066, 0, 0.448275864, 0)
-FavoriteButton.Size = UDim2.new(0.444444448, 0, 0.517241359, 0)
+FavoriteButton.Size = UDim2.new(0, 60, 0, 60)
 FavoriteButton.Image = "rbxassetid://16167594625"
 FavoriteButton.ImageRectOffset = Vector2.new(871, 436)
 FavoriteButton.ImageRectSize = Vector2.new(108, 108)
-
-UIAspectRatioConstraint_14.Parent = FavoriteButton
-UIAspectRatioConstraint_14.AspectRatio = 1.000
-
-UIAspectRatioConstraint_15.Parent = Animationsframe
-UIAspectRatioConstraint_15.AspectRatio = 1.164
-
-UIAspectRatioConstraint_16.Parent = tab1
-UIAspectRatioConstraint_16.AspectRatio = 2.202
 
 tab3.Name = "tab3"
 tab3.Parent = echframe
@@ -462,7 +366,7 @@ tab3.BackgroundTransparency = 1.000
 tab3.BorderColor3 = Color3.fromRGB(0, 0, 0)
 tab3.BorderSizePixel = 0
 tab3.Position = UDim2.new(0, 0, 0.180858031, 0)
-tab3.Size = UDim2.new(0.998689413, 0, 0.817966938, 0)
+tab3.Size = UDim2.new(0, 762, 0, 346)
 tab3.Visible = false
 
 settingsframe.Name = "settingsframe"
@@ -481,22 +385,14 @@ settingname.BackgroundTransparency = 1.000
 settingname.BorderColor3 = Color3.fromRGB(0, 0, 0)
 settingname.BorderSizePixel = 0
 settingname.Position = UDim2.new(0.0518620759, 0, 0.167728126, 0)
-settingname.Size = UDim2.new(0.366622865, 0, 0.647482038, 0)
+settingname.Size = UDim2.new(0, 279, 0, 90)
 settingname.Font = Enum.Font.SourceSansBold
 settingname.Text = "Gui key: Ctrl"
 settingname.TextColor3 = Color3.fromRGB(255, 255, 255)
-settingname.TextScaled = true
 settingname.TextSize = 68.000
-settingname.TextWrapped = true
 
 UIGradient_7.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(32, 60, 111)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(132, 132, 132))}
 UIGradient_7.Parent = settingname
-
-UITextSizeConstraint_5.Parent = settingname
-UITextSizeConstraint_5.MaxTextSize = 68
-
-UIAspectRatioConstraint_17.Parent = settingname
-UIAspectRatioConstraint_17.AspectRatio = 3.100
 
 settingname_2.Name = "settingname"
 settingname_2.Parent = settingsframe
@@ -505,7 +401,7 @@ settingname_2.BackgroundTransparency = 1.000
 settingname_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
 settingname_2.BorderSizePixel = 0
 settingname_2.Position = UDim2.new(0.062374562, 0, 1.08859146, 0)
-settingname_2.Size = UDim2.new(0.366622865, 0, 0.647482038, 0)
+settingname_2.Size = UDim2.new(0, 279, 0, 90)
 settingname_2.Font = Enum.Font.Unknown
 settingname_2.Text = "Hi, I'm Echelon. This is the first version of the script, more to come. Please let me know if you find any bugs."
 settingname_2.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -515,12 +411,6 @@ settingname_2.TextWrapped = true
 
 UIGradient_8.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(32, 60, 111)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(132, 132, 132))}
 UIGradient_8.Parent = settingname_2
-
-UITextSizeConstraint_6.Parent = settingname_2
-UITextSizeConstraint_6.MaxTextSize = 89
-
-UIAspectRatioConstraint_18.Parent = settingname_2
-UIAspectRatioConstraint_18.AspectRatio = 3.100
 
 ImageLabel_6.Parent = settingsframe
 ImageLabel_6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -538,7 +428,7 @@ settingname_3.BackgroundTransparency = 1.000
 settingname_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
 settingname_3.BorderSizePixel = 0
 settingname_3.Position = UDim2.new(0.167499393, 0, 1.67851949, 0)
-settingname_3.Size = UDim2.new(0.134034172, 0, 0.769784153, 0)
+settingname_3.Size = UDim2.new(0, 102, 0, 107)
 settingname_3.Font = Enum.Font.Unknown
 settingname_3.Text = "1.0"
 settingname_3.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -549,21 +439,6 @@ settingname_3.TextWrapped = true
 UIGradient_9.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(32, 60, 111)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(132, 132, 132))}
 UIGradient_9.Parent = settingname_3
 
-UITextSizeConstraint_7.Parent = settingname_3
-UITextSizeConstraint_7.MaxTextSize = 96
-
-UIAspectRatioConstraint_19.Parent = settingname_3
-UIAspectRatioConstraint_19.AspectRatio = 0.953
-
-UIAspectRatioConstraint_20.Parent = settingsframe
-UIAspectRatioConstraint_20.AspectRatio = 5.475
-
-UIAspectRatioConstraint_21.Parent = tab3
-UIAspectRatioConstraint_21.AspectRatio = 2.202
-
-UIAspectRatioConstraint_22.Parent = echframe
-UIAspectRatioConstraint_22.AspectRatio = 1.804
-
 ToggleFrame.Name = "ToggleFrame"
 ToggleFrame.Parent = ScreenGui
 ToggleFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -571,7 +446,7 @@ ToggleFrame.BackgroundTransparency = 1.000
 ToggleFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 ToggleFrame.BorderSizePixel = 0
 ToggleFrame.Position = UDim2.new(0.31864351, 0, 0.0253950339, 0)
-ToggleFrame.Size = UDim2.new(0.0867244899, 0, 0.128386006, 0)
+ToggleFrame.Size = UDim2.new(0, 104, 0, 91)
 
 UIToolsGradient_5.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(13, 13, 13)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 0, 0))}
 UIToolsGradient_5.Name = "UIToolsGradient"
@@ -583,7 +458,7 @@ ImageButton.BackgroundTransparency = 1.000
 ImageButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 ImageButton.BorderSizePixel = 0
 ImageButton.Position = UDim2.new(0.134615391, 0, -0.0549450554, 0)
-ImageButton.Size = UDim2.new(0.80769223, 0, 0.824175835, 0)
+ImageButton.Size = UDim2.new(0, 84, 0, 75)
 ImageButton.Image = "rbxassetid://16884179279"
 ImageButton.ImageRectOffset = Vector2.new(690, 254)
 ImageButton.ImageRectSize = Vector2.new(54, 54)
@@ -600,15 +475,9 @@ ImageLabel_7.Image = "rbxassetid://72876478870333"
 ImageLabel_7.ImageColor3 = Color3.fromRGB(24, 155, 255)
 ImageLabel_7.ImageTransparency = 0.600
 
-UIAspectRatioConstraint_23.Parent = ImageButton
-UIAspectRatioConstraint_23.AspectRatio = 1.120
-
-UIAspectRatioConstraint_24.Parent = ToggleFrame
-UIAspectRatioConstraint_24.AspectRatio = 1.143
-
 -- Scripts:
 
-local function PKTU_fake_script() -- ScreenGui.drgabble 
+local function DNYWMN_fake_script() -- ScreenGui.drgabble 
 	local script = Instance.new('LocalScript', ScreenGui)
 
 	-- Services
@@ -678,8 +547,8 @@ local function PKTU_fake_script() -- ScreenGui.drgabble
 	end
 	
 end
-coroutine.wrap(PKTU_fake_script)()
-local function LQFMOE_fake_script() -- ScreenGui.togglescript 
+coroutine.wrap(DNYWMN_fake_script)()
+local function COTMLMF_fake_script() -- ScreenGui.togglescript 
 	local script = Instance.new('LocalScript', ScreenGui)
 
 	local Players = game:GetService("Players")
@@ -715,8 +584,8 @@ local function LQFMOE_fake_script() -- ScreenGui.togglescript
 	end)
 	
 end
-coroutine.wrap(LQFMOE_fake_script)()
-local function VOWSJJ_fake_script() -- echframe.animationsscript 
+coroutine.wrap(COTMLMF_fake_script)()
+local function KXMBABA_fake_script() -- echframe.animationsscript 
 	local script = Instance.new('LocalScript', echframe)
 
 	--[[
@@ -1603,8 +1472,8 @@ local function VOWSJJ_fake_script() -- echframe.animationsscript
 	
 	setup()
 end
-coroutine.wrap(VOWSJJ_fake_script)()
-local function PKLEKD_fake_script() -- echframe.tabsystem 
+coroutine.wrap(KXMBABA_fake_script)()
+local function URPFDVC_fake_script() -- echframe.tabsystem 
 	local script = Instance.new('LocalScript', echframe)
 
 	-- LocalScript inside echframe
@@ -1684,8 +1553,8 @@ local function PKLEKD_fake_script() -- echframe.tabsystem
 	tab1.Visible = true
 	
 end
-coroutine.wrap(PKLEKD_fake_script)()
-local function GINXSA_fake_script() -- echframe.emotescript 
+coroutine.wrap(URPFDVC_fake_script)()
+local function OCCDQM_fake_script() -- echframe.emotescript 
 	local script = Instance.new('LocalScript', echframe)
 
 	--[[ 
@@ -2028,10 +1897,10 @@ local function GINXSA_fake_script() -- echframe.emotescript
 	
 	init()
 end
-coroutine.wrap(GINXSA_fake_script)()
-local function LFBPXP_fake_script() -- echframe.settingscript 
+coroutine.wrap(OCCDQM_fake_script)()
+local function YGDZFW_fake_script() -- echframe.settingscript 
 	local script = Instance.new('LocalScript', echframe)
 
 	
 end
-coroutine.wrap(LFBPXP_fake_script)()
+coroutine.wrap(YGDZFW_fake_script)()
